@@ -6,7 +6,7 @@ def multiply_by_two(number: int) -> int:
     return number * 2
 
 
-def format_response(status: int, message: str = None, error: str = None) -> bool:
+def format_response(status: int, message: str = None, error: str = None) -> dict:
     if status in [404, 500]:
         return {
             "status": status,
@@ -19,7 +19,7 @@ def format_response(status: int, message: str = None, error: str = None) -> bool
         }
 
 
-def check_word_in_list(word: str, word_list: List[str]):
+def check_word_in_list(word: str, word_list: List[str]) -> bool:
     if word_list == []:
         raise Exception("Word list should not be empty")
 
@@ -28,6 +28,6 @@ def check_word_in_list(word: str, word_list: List[str]):
     return False
 
 
-def send_requests(url: str, pages: int, data: dict):
+def send_requests(url: str, pages: int, data: dict) -> None:
     for i in range(pages):
         requests.post(f"{url}/{i+1}", data=data)
