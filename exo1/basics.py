@@ -1,3 +1,4 @@
+import requests
 from typing import List
 
 
@@ -25,3 +26,8 @@ def check_word_in_list(word: str, word_list: List[str]):
     if word in word_list:
         return True
     return False
+
+
+def send_requests(url: str, pages: int, data: dict):
+    for i in range(pages):
+        requests.post(f"{url}/{i+1}", data=data)
